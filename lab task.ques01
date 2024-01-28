@@ -1,0 +1,40 @@
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def find_min_max(root):
+    if root is None:
+        return None, None
+
+    # Find the minimum value (leftmost node)
+    while root.left is not None:
+        root = root.left
+    min_value = root.value
+
+    # Find the maximum value (rightmost node)
+    while root.right is not None:
+        root = root.right
+    max_value = root.value
+
+    return min_value, max_value
+
+# Example usage:
+# Create a sample BST
+#        10
+#       /  \
+#      5   15
+#     / \    \
+#    3   8   20
+
+root = TreeNode(10)
+root.left = TreeNode(5)
+root.right = TreeNode(15)
+root.left.left = TreeNode(3)
+root.left.right = TreeNode(8)
+root.right.right = TreeNode(20)
+
+min_val, max_val = find_min_max(root)
+print("Minimum value:", min_val)
+print("Maximum value:", max_val)
